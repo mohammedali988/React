@@ -1,23 +1,36 @@
 import './App.css';
+import Comment from './CommentDetails';
 import faker from "faker";
+import Approval from './Approval';
 
 function App() {
+  
   return (
     <div className = " ui container comments">
-      <div className="comment"> 
-        <a href="/" className="avatar">
-          <img alt="avatar" src ={faker.image.avatar()}/>
-        </a>
-        <div className="content">
-          <a href="/" className="author" >
-            Sam 
-          </a>
-          <div className="metadata">
-            <span className="data" >Today at 6:00 pm </span>
-          </div>
-          <div className="text"> Nice plog post </div>
-        </div>
-      </div>
+      <Approval>
+        <Comment
+          author ="Sam"
+          time="Today at 7:00pm"
+          comment = "Nice blog"
+          img={faker.image.avatar()} 
+        />
+      </Approval>
+      <Approval>
+        <Comment 
+          author ="Memo"
+          time="Today at 9:00 Am" 
+          comment="Hi there" 
+          img={faker.image.avatar()} 
+        />
+      </Approval>
+      <Approval>
+        <Comment 
+          author = "Alex" 
+          time="Satarday at 11:00 pm" 
+          comment="Beatifull" 
+          img={faker.image.avatar()} 
+        />
+      </Approval>
     </div>
   );
 }
