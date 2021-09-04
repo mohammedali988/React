@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import SeasonsDisplay from './seasonDisplay';
+import Loader from './loader';
 
 function App() {
 
@@ -14,19 +15,27 @@ function App() {
     )
   })
 
-  if(error && !pos){
-    return(
-      <div>
-        error:{error}
-      </div>
-    )
+  const renderContent = ()=>{
+    if(error && !pos){
+      return(
+        <div>
+          error:{error}
+        </div>
+      )
+    }
+    else if(!error && pos){
+      return(
+        <SeasonsDisplay pos={pos}/>
+      )
+    }
+    else return <Loader message="please accept the relocation"/>
   }
-  else if(!error && pos){
-    return(
-      <SeasonsDisplay pos={pos}/>
-    )
-  }
-  else return <div> Loading!</div>
+
+  return (
+    <div >
+      {renderContent()}
+    </div>
+  );
 }
 
 export default App;
